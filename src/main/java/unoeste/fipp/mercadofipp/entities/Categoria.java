@@ -3,7 +3,7 @@ package unoeste.fipp.mercadofipp.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Categoria")
+@Table(name = "categoria")
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
