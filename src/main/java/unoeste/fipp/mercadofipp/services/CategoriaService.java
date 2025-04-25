@@ -14,8 +14,29 @@ public class CategoriaService {
     public List<Categoria> getAll(){
         return categoriaRepository.findAll();
     }
-    //inserir
-    //alterar
-    //getId
-    //apagar
+
+    public Categoria getById(Long id){
+        return categoriaRepository.findById(id).orElse(null);
+    }
+
+    public Categoria save(Categoria categoria){
+        try {
+            Categoria novaCategoria = categoriaRepository.save(categoria);
+            return novaCategoria;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    public boolean delete(Long id){
+        Categoria categoria = categoriaRepository.findById(id).orElse(null);
+        try {
+            categoriaRepository.delete(categoria);
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
+    }
+
 }
