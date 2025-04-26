@@ -11,6 +11,7 @@ import java.util.List;
 public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
+
     public List<Categoria> getAll(){
         return categoriaRepository.findAll();
     }
@@ -21,8 +22,7 @@ public class CategoriaService {
 
     public Categoria save(Categoria categoria){
         try {
-            Categoria novaCategoria = categoriaRepository.save(categoria);
-            return novaCategoria;
+            return categoriaRepository.save(categoria);
         }catch (Exception e){
             return null;
         }
@@ -31,8 +31,12 @@ public class CategoriaService {
     public boolean delete(Long id){
         Categoria categoria = categoriaRepository.findById(id).orElse(null);
         try {
-            categoriaRepository.delete(categoria);
-            return true;
+            if (categoria != null){
+                categoriaRepository.delete(categoria);
+                return true;
+            }
+            else
+                return false;
         }
         catch (Exception e){
             return false;
