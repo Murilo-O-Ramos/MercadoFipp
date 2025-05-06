@@ -31,4 +31,13 @@ public class AnuncioService {
             return false;
         }
     }
+
+    public boolean updatePergunta(Long id_pergunta, String texto){
+        try{
+            anuncioRepository.updatePergunta(texto, id_pergunta);
+            return true;
+        }catch (Exception e) {
+            return false;
+        }
+    }
 }
